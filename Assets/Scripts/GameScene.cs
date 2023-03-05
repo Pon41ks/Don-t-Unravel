@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement; 
 
-public class Scene : MonoBehaviour
+public class GameScene : MonoBehaviour
 {
    public void RestartLevel()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    {       
+        SceneManager.LoadScene(1);        
     }
 }
