@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class Cat : MonoBehaviour
-{
-    [SerializeField] GameObject RestartButton; // Игровой объект отвечающий за перезапуск уровня
+{    
+    public GameObject loseMenu;
+    public GameObject RestartButton;
+    
     [SerializeField] float force; //сила толчка
     Rigidbody2D rb; 
     void Start()
@@ -21,16 +24,25 @@ public class Cat : MonoBehaviour
             rb.velocity = Vector2.up * force;
         }
     }
+    
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    public void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.tag == "Enemy" )
+        if (collision.collider.tag == "Enemy")
         {
-            Destroy(gameObject);
             Time.timeScale = 0;
             RestartButton.SetActive(true);
+            loseMenu.SetActive(true);
         }
     }
+
+    public void LoadMenu()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("Menu");
+    }
+
+
 
 
 

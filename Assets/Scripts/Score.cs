@@ -10,11 +10,11 @@ public class Score : MonoBehaviour
     {
         score = 0;
     }
-
-    
+  
     void Update()
     {
         scoreText.text = score.ToString();
+       
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
