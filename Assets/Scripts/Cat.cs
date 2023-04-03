@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 
 
 public class Cat : MonoBehaviour
-{    
+{
+    public Animator anim;
     public GameObject loseMenu;
     public GameObject RestartButton;
     
@@ -22,6 +23,7 @@ public class Cat : MonoBehaviour
         if(Input.GetMouseButtonDown(0))
         {
             rb.velocity = Vector2.up * force;
+            anim.SetTrigger("onJump");
         }
     }
     
