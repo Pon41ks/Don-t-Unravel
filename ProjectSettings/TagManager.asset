@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Score
+  - Coin
   layers:
   - Default
   - TransparentFX
@@ -43,6 +44,18 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: BackGround
+  - name: Background
     uniqueID: 3725583041
+    locked: 0
+  - name: Coins
+    uniqueID: 3931684753
+    locked: 0
+  - name: Pipes
+    uniqueID: 4093699107
+    locked: 0
+  - name: Player
+    uniqueID: 4083130745
+    locked: 0
+  - name: UI
+    uniqueID: 4016507793
     locked: 0
