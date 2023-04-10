@@ -1,7 +1,9 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(PlayerInput))]
 public class Player : MonoBehaviour
 {
     [SerializeField] private float jumpForce; //сила толчка
@@ -16,9 +18,9 @@ public class Player : MonoBehaviour
         
         Time.timeScale = 1; 
     }
-    private void Update()
+    public void Jump(InputAction.CallbackContext ctx)
     {
-        if (!Input.GetMouseButtonDown(0)) return;
+        if (!ctx.performed) return;
         _rb.velocity = Vector2.up * jumpForce;
         _animator.SetTrigger("onJump");
     }

@@ -6,6 +6,6 @@ public class Coin : MonoBehaviour
     {
         if (!other.CompareTag("Player")) return;
         GlobalEventManager.SendCoinCollected();
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }
