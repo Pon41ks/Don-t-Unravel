@@ -3,7 +3,7 @@ using TMPro;
 
 public class ScoreManager : MonoBehaviour
 {
-    private int _coin;
+    protected int _coin;
     private int _score;
     private int _record;
     
