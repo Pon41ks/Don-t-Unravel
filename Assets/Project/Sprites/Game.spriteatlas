@@ -58,8 +58,8 @@ SpriteAtlas:
   - {fileID: 21300000, guid: bc29303bd0e7c78409779639ae2734b9, type: 3}
   - {fileID: -1612741503, guid: c4b0adecdc3b8b34a95a2e512080fdb8, type: 3}
   m_PackedSpriteNamesToIndex:
-  - clubok_idle
-  - clubok_dead
+  - Tangle
+  - DeadTangle
   - BG
   - lapka__0
   m_RenderDataMap: {}

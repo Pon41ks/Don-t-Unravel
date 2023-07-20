@@ -3,44 +3,43 @@ using TMPro;
 
 public class ScoreManager : MonoBehaviour
 {
-    protected int _coin;
+    private int _collectedCoins;
     private int _score;
-    private int _record;
-    
+
     [SerializeField] private TextMeshProUGUI coinText;
     
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI finalScoreText;
     [SerializeField] private TextMeshProUGUI recordText;
+    [SerializeField] private TextMeshProUGUI collectedCoinsText;
     private void Awake()
     {
-        _coin = PlayerPrefs.GetInt("maxCoin", 0);
-        coinText.text = PlayerPrefs.GetInt("maxCoin").ToString();
+        coinText.text = SaveData.Current.coins.ToString();
         
-        RefreshScore();
         GlobalEventManager.OnScoreAdded.AddListener(AddScore);
-        GlobalEventManager.OnCoinCollected.AddListener(RefreshCoins);
+        GlobalEventManager.OnCoinCollected.AddListener(AddCoin);
+        GlobalEventManager.OnPlayerDied.AddListener(UpdateGameOverPanel);
     }
-    private void RefreshCoins()
+    private void AddCoin()
     {
-        _coin++;   
-        PlayerPrefs.SetInt("maxCoin", _coin);
-        coinText.text = PlayerPrefs.GetInt("maxCoin").ToString();
+        SaveData.Current.coins++;
+        _collectedCoins++;
+        coinText.text = SaveData.Current.coins.ToString();
     }
     private void AddScore(int value)
     {
         _score += value;
-        RefreshScore();
+        scoreText.text = _score.ToString();
     }
-    private void RefreshScore()
+    private void UpdateGameOverPanel()
     {
-        _record = _score;
-        if(_record > PlayerPrefs.GetInt("record"))
+        if(_score > SaveData.Current.record)
         {
-            PlayerPrefs.SetInt("record", _record);
+            SaveData.Current.record = _score;
         }
         scoreText.text = _score.ToString();
-        recordText.text = "Рекорд:" + PlayerPrefs.GetInt("record");
-        finalScoreText.text = "Итоговый Счет:" + _score;
+        recordText.text = "Рекорд:" + SaveData.Current.record;
+        finalScoreText.text = "Набрано очков:" + _score;
+        collectedCoinsText.text = "Собрано монет:" + _collectedCoins;
     }
 }

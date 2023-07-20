@@ -58,7 +58,7 @@ SpriteAtlas:
   m_PackedSpriteNamesToIndex:
   - Background2_
   - "\u0440\u0435\u0441\u0442\u0430\u0440\u04421_0"
-  - 8005c3f097833b6f_0
+  - startGame
   m_RenderDataMap: {}
   m_Tag: UI
   m_IsVariant: 0
